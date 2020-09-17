@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Cypress</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</head>
+
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">
+                Hello World
+            </h1>
+            <p>
+                ALPHA: Búscame usando cy.contain
+            </p>
+            <br>
+            <p>
+                BETA: Coméntame y búscame usando cy.contain ¿Qué sucede?
+            </p>
+            <br>
+            <p style="display: none" >
+                CHARLIE ¿y si intento un hidden?
+            </p>
+            <br>
+            <input placeholder="escribe en mí" />
+            <br>
+            <br>
+            <button>Es hora de la precionación</button>
+            <br>
+            <br>
+            <label>Checkbox</label>
+            <input type="checkbox" id="checkbox">
+            <br>
+            <br>
+            <p>DELTA: tengo una clase "title"?</p>
+            <br>
+            <br>
+            <h1 class="login-title">Login</h1>
+            <input id="login-user" type="text" placeholder="user" />
+            <input id="login-password" type="text" placeholder="password" />
+            <button id="login-button"  onclick="login()">Login now</button>
+            <div>
+                <h1>Login result</h1>
+                <h2 id="login-result"></h2>
+            </div>
+        </div>
+        <script>
+            function login(){
+
+                const user =document.getElementById('login-user').value;
+                const password = document.getElementById('login-password').value;
+                
+                console.log('user', user)
+                console.log('password', password)
+                axios.post('/login',{
+                    user,
+                    password
+                }).then(()=>{
+                    document.getElementById('login-result').innerText = 'LOG-IN'
+                }).catch(()=>{
+                    document.getElementById('login-result').innerText = 'ERROR'
+                })
+            }
+        </script>
+    </section>
+</body>
+
+</html>
